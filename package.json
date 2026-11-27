@@ -1,0 +1,75 @@
+{
+  "name": "iotika-verilog-runner",
+  "displayName": "Iotika Verilog Runner",
+  "description": "One-click Compile, Run (iverilog + vvp), and GTKWave waveform buttons for Verilog (.v) files — by Iotika Technology Private Limited.",
+  "version": "0.1.0",
+  "publisher": "iotika-technology",
+  "author": {
+    "name": "Washim Bari",
+    "url": "https://iotika.in"
+  },
+  "homepage": "https://iotika.in",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Washimbar/verilog-runner.git"
+  },
+  "license": "MIT",
+  "icon": "images/icon.png",
+  "engines": {
+    "vscode": "^1.80.0"
+  },
+  "categories": [
+    "Other",
+    "Programming Languages"
+  ],
+  "keywords": [
+    "verilog",
+    "iverilog",
+    "gtkwave",
+    "vvp",
+    "simulation",
+    "iotika"
+  ],
+  "activationEvents": [
+    "onLanguage:verilog",
+    "workspaceContains:**/*.v",
+    "onCommand:verilogRunner.run",
+    "onCommand:verilogRunner.runWave",
+    "onCommand:verilogRunner.newModule"
+  ],
+  "main": "./extension.js",
+  "contributes": {
+    "commands": [
+      {
+        "command": "verilogRunner.run",
+        "title": "Verilog Runner: Compile & Run",
+        "icon": "$(play)"
+      },
+      {
+        "command": "verilogRunner.runWave",
+        "title": "Verilog Runner: Compile, Run & Open GTKWave",
+        "icon": "$(pulse)"
+      },
+      {
+        "command": "verilogRunner.newModule",
+        "title": "Verilog Runner: New Module + Testbench",
+        "icon": "$(new-file)"
+      }
+    ],
+    "menus": {
+      "editor/title": [
+        {
+          "command": "verilogRunner.run",
+          "when": "resourceExtname == .v",
+          "group": "navigation@1"
+        },
+        {
+          "command": "verilogRunner.runWave",
+          "when": "resourceExtname == .v",
+          "group": "navigation@2"
+        }
+      ]
+    }
+  }
+}
+
